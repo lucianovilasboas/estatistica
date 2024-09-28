@@ -4,15 +4,14 @@ import streamlit as st
 st.title("Somatório de forma prática") 
 
 # Entrada para os dados (X)
-st.write("Insira os valores da variável X, separados por vírgulas:")
-dados_input_X = st.text_area("Exemplo para X: 1, 2, 3, 4, 5", value="1, 2, 3, 4, 5")
+st.sidebar.write("# Entre com os dados")
+st.sidebar.write("Insira os valores da variável X, separados por vírgulas:")
+dados_input_X = st.sidebar.text_area("Exemplo para X: 1, 2, 3, 4, 5", value="1, 2, 3, 4, 5")
 
 # Entrada para os dados (Y)
-st.write("Insira os valores da variável Y, separados por vírgulas (mesmo tamanho que X):")
-dados_input_Y = st.text_area("Exemplo para Y: 5, 4, 3, 2, 1", value="5, 4, 3, 2, 1")
+st.sidebar.write("Insira os valores da variável Y, separados por vírgulas (mesmo tamanho que X):")
+dados_input_Y = st.sidebar.text_area("Exemplo para Y: 5, 4, 3, 2, 1", value="5, 4, 3, 2, 1")
 
-# Entrada para o limite inferior (LI)
-i = st.number_input("Informe o limite inferior (i ou LI):", min_value=1, value=1)
 
 # Converter os dados de entrada em uma lista de floats
 try:
@@ -21,23 +20,20 @@ try:
 except ValueError:
     st.error("Por favor, insira os valores corretamente separados por vírgulas.")
 
+# Entrada para o limite inferior (LI)
+i = st.sidebar.number_input("Informe o limite inferior (i ou LI):", min_value=1, value=1, max_value=len(dados_X))
+
 # Verificar se o tamanho das listas de X e Y é o mesmo
 if len(dados_X) != len(dados_Y):
     st.error("As listas de X e Y precisam ter o mesmo tamanho.")
 
 # Entrada para o limite superior (LS) iniciando com o tamanho de X
-n = st.number_input("Informe o limite superior (n ou LS):", min_value=i, value=len(dados_X))
+n = st.sidebar.number_input("Informe o limite superior (n ou LS):", min_value=i, value=len(dados_X), max_value=len(dados_X))
 
 # Seletor para escolher se as operações serão feitas em X ou Y
-variavel = st.selectbox("Selecione a variável para aplicar as operações:", ("X", "Y"))
+variavel = st.sidebar.selectbox("Selecione a variável para aplicar as operações:", ("X", "Y"))
 
-# Opções para o tipo de operação
-operacao = st.selectbox(
-    "Selecione o tipo de operação:",
-    ("Soma Simples (X ou Y)", "Soma dos Quadrados (X ou Y)", "Quadrado da Soma (X ou Y)", 
-     "Soma de Produtos (X e Y)", "Produto da Soma (X e Y)", "Produto da Soma de Quadrados (X e Y)", 
-     "Soma de Quadrados de Produtos (X e Y)")
-)
+
 
 # Definir a função para o somatório
 def somatorio(tipo_operacao, dados, dados_X, dados_Y, i, n):
@@ -98,16 +94,23 @@ def somatorio(tipo_operacao, dados, dados_X, dados_Y, i, n):
 # Determinar os dados que serão utilizados (X ou Y) com base na escolha do usuário
 dados = dados_X if variavel == "X" else dados_Y
 
-# Processar o somatório e exibir o resultado
-if st.button("Calcular Somatório"):
-    resultado, expressao = somatorio(operacao, dados, dados_X, dados_Y, i, n)
+
+# Opções para o tipo de operação
+operacao = st.selectbox(
+    "Selecione o tipo de operação:",
+    ("Soma Simples (X ou Y)", "Soma dos Quadrados (X ou Y)", "Quadrado da Soma (X ou Y)", 
+     "Soma de Produtos (X e Y)", "Produto da Soma (X e Y)", "Produto da Soma de Quadrados (X e Y)", 
+     "Soma de Quadrados de Produtos (X e Y)")
+)
+
+resultado, expressao = somatorio(operacao, dados, dados_X, dados_Y, i, n)
+
+if resultado is not None and expressao is not None:
+    # Exibir a expressão do somatório usando símbolos matemáticos
+    st.latex(expressao)
     
-    if resultado is not None and expressao is not None:
-        # Exibir a expressão do somatório usando símbolos matemáticos
-        st.latex(expressao)
-        
-        # Exibir o resultado do somatório
-        st.write(f"**Resultado do somatório**: {resultado}")
+    # Exibir o resultado do somatório
+    # st.write(f"**Resultado do somatório**: {resultado}")
 
 
 
