@@ -3,28 +3,30 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Título do aplicativo
-st.title("Gerador de Histograma com Ajuste de Bins e Tamanho dos Bins")
+st.title("Gerador de Histograma")
 
 # Entrada dos dados
-st.write("Insira os dados separados por vírgulas:")
-dados_input = st.text_area("Exemplo: 6.67, 6.82, 6.90, 7.05, 7.10")
+st.sidebar.write("# Entre com os dados")
+st.sidebar.write("Insira os dados separados por vírgulas:")
+dados_input = st.sidebar.text_area("Exemplo: 6.67, 6.82, 6.90, 7.05, 7.10")
 
 # Converter a string de entrada em uma lista de floats
 if dados_input:
     try:
-        dados = list(map(float, dados_input.split(',')))
+        dados = list(map(float, dados_input.split(','))) 
         
         # Identificar os valores mínimo e máximo dos dados
         min_val, max_val = min(dados), max(dados)
 
         # Escolha o número de bins
-        bins = st.slider('Escolha o número de bins (faixas)', min_value=1, max_value=20, value=5)
+        bins = st.sidebar.slider('Escolha o número de bins (faixas)', min_value=1, max_value=20, value=5)
 
-        # Permitir o ajuste do tamanho de cada bin
-        bin_size = st.slider('Escolha o tamanho do bin', min_value=0.01, max_value=(max_val - min_val) / 2, value=(max_val - min_val) / bins)
+        # # Permitir o ajuste do tamanho de cada bin
+        # bin_size = st.sidebar.slider('Escolha o tamanho do bin', min_value=0.01, max_value=(max_val - min_val) / 2, value=(max_val - min_val) / bins)
 
-        # Gerar os limites das faixas (bins) com base no tamanho do bin escolhido
-        bin_edges = np.arange(min_val, max_val + bin_size, bin_size)
+        # Gerar os limites das faixas (bins) corretamente usando np.linspace para garantir a quantidade exata de bins
+        bin_edges = np.linspace(min_val, max_val, bins + 1)
+
 
         # Gerar o histograma e calcular a frequência de cada bin
         hist, bin_edges = np.histogram(dados, bins=bin_edges)
@@ -40,7 +42,6 @@ if dados_input:
         # Configurações de rótulos e título
         ax.set_xlabel('Faixas de Valores')
         ax.set_ylabel('Frequência')
-        ax.set_title('Histograma com ajuste de bins e tamanho dos bins')
        
         # Exibir o gráfico
         st.pyplot(fig)
