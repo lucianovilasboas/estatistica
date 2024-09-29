@@ -19,8 +19,16 @@ if dados_input:
         min_val, max_val = min(dados), max(dados)
 
         # Escolha o número de bins
-        bins = st.sidebar.slider('Escolha o número de bins (faixas)', min_value=1, max_value=20, value=5)
+        # bins = st.sidebar.slider('Escolha o número de bins (faixas)', min_value=1, max_value=20, value=5)
 
+        bins = st.sidebar.slider(
+            'Escolha o número de bins (faixas)',
+            min_value=1,
+            max_value=20,
+            value=5,
+            format="%d"  # Exibe os valores como números inteiros
+)
+        
         # # Permitir o ajuste do tamanho de cada bin
         # bin_size = st.sidebar.slider('Escolha o tamanho do bin', min_value=0.01, max_value=(max_val - min_val) / 2, value=(max_val - min_val) / bins)
 
