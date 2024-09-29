@@ -20,6 +20,7 @@ try:
 except ValueError:
     st.error("Por favor, insira os valores corretamente separados por vírgulas.")
 
+
 # Entrada para o limite inferior (LI)
 i = st.sidebar.number_input("Informe o limite inferior (i ou LI):", min_value=1, value=1, max_value=len(dados_X))
 
@@ -32,7 +33,6 @@ n = st.sidebar.number_input("Informe o limite superior (n ou LS):", min_value=i,
 
 # Seletor para escolher se as operações serão feitas em X ou Y
 variavel = st.sidebar.selectbox("Selecione a variável para aplicar as operações:", ("X", "Y"))
-
 
 
 # Definir a função para o somatório
@@ -84,7 +84,7 @@ def somatorio(tipo_operacao, dados, dados_X, dados_Y, i, n):
         expressao_Y = " + ".join([f"{y}^2" for y in elementos_Y])
         return soma_quadrados_X * soma_quadrados_Y, f"\\left(\\sum_{{i={i}}}^{{n={n}}} X_{{i}}^2 \\right) \\cdot \\left(\\sum_{{i={i}}}^{{n={n}}} Y_{{i}}^2 \\right) = \\left({expressao_X}\\right) \\cdot \\left({expressao_Y}\\right) = {soma_quadrados_X * soma_quadrados_Y}"
     
-    elif tipo_operacao == "Soma de Quadrados de Produtos (X e Y)":
+    elif tipo_operacao == "Soma de Produtos de Quadrados (X e Y)":
         elementos_X = dados_X[i-1:n]
         elementos_Y = dados_Y[i-1:n]
         soma_quadrados_produtos = sum((x**2) * (y**2) for x, y in zip(elementos_X, elementos_Y))
@@ -100,18 +100,43 @@ operacao = st.selectbox(
     "Selecione o tipo de operação:",
     ("Soma Simples (X ou Y)", "Soma dos Quadrados (X ou Y)", "Quadrado da Soma (X ou Y)", 
      "Soma de Produtos (X e Y)", "Produto da Soma (X e Y)", "Produto da Soma de Quadrados (X e Y)", 
-     "Soma de Quadrados de Produtos (X e Y)")
+     "Soma de Produtos de Quadrados (X e Y)")
 )
 
 resultado, expressao = somatorio(operacao, dados, dados_X, dados_Y, i, n)
 
+
+def adicionar_quebra_linha(expressao, max_elementos_por_linha):
+    # Dividir a expressão por elementos somados (+)
+    elementos = expressao.split('+')
+    expressao_com_quebra = ''
+    contador = 0
+    
+    for elemento in elementos:
+        if contador == max_elementos_por_linha:
+            expressao_com_quebra += '\\\\'  # Adiciona a quebra de linha
+            contador = 0
+        expressao_com_quebra += elemento + ' + '
+        contador += 1
+    
+    # Remover o último ' + ' no final
+    return expressao_com_quebra.rstrip(' + ')
+
 if resultado is not None and expressao is not None:
     # Exibir a expressão do somatório usando símbolos matemáticos
-    st.latex(expressao)
     
+    st.write("## Resultado:")
+  
+    # st.write(expressao)
+
+    # st.latex(expressao)
+    # st.latex(r"\large " + expressao.replace("+","+\\\\"))
     # Exibir o resultado do somatório
     # st.write(f"**Resultado do somatório**: {resultado}")
 
+
+    expressao_quebrada = adicionar_quebra_linha(expressao, max_elementos_por_linha=2)
+    st.latex(r"\large  " + expressao_quebrada)
 
 
 
