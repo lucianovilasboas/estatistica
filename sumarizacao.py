@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from scipy import stats
 
 # Título do aplicativo
-st.title("Análise de Dados com Sumarização e Histograma")
+st.title("Sumarização de daods")
 
 # Entrada dos dados
 st.sidebar.write("# Entre com os dados")
@@ -48,7 +48,7 @@ if dados_input:
         st.write(f"**Variância**: {variancia}")
         
         # Gerar o histograma
-        st.write("### Histograma dos Dados")
+        st.write("### Histograma dos Dados:")
         fig, ax = plt.subplots()
         ax.hist(dados, bins=10, edgecolor='black')
         ax.set_xlabel('Faixas de Valores')
