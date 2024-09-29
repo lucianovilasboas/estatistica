@@ -8,8 +8,9 @@ from scipy import stats
 st.title("Análise de Dados com Sumarização e Histograma")
 
 # Entrada dos dados
-st.write("Insira os dados separados por vírgulas:")
-dados_input = st.text_area("Exemplo: 6.67, 6.82, 6.90, 7.05, 7.10")
+st.sidebar.write("# Entre com os dados")
+st.sidebar.write("Insira os dados separados por vírgulas:")
+dados_input = st.sidebar.text_area("Exemplo: 6.67, 6.82, 6.90, 7.05, 7.10")
 
 # Converter a string de entrada em uma lista de floats
 if dados_input:
@@ -52,7 +53,6 @@ if dados_input:
         ax.hist(dados, bins=10, edgecolor='black')
         ax.set_xlabel('Faixas de Valores')
         ax.set_ylabel('Frequência')
-        ax.set_title('Histograma')
         
         # Exibir o histograma
         st.pyplot(fig)
