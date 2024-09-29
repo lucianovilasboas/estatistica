@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from scipy import stats
 
 # Título do aplicativo
-st.title("Sumarização de daods")
+st.title("Sumarização de dados")
 
 # Entrada dos dados
 st.sidebar.write("# Entre com os dados")
