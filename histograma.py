@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
+st.set_page_config(layout="wide")
+
 # Título do aplicativo
 st.title("Gerador de Histograma")
 

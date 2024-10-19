@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(layout="wide")
+
 # Título do aplicativo
 st.title("Somatório de forma prática")
 

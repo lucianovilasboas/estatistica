@@ -4,6 +4,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
 
+st.set_page_config(layout="wide")
+
 # Título do aplicativo
 st.title("Sumarização de dados")
 
