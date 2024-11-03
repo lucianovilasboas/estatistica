@@ -59,7 +59,8 @@ st.write("- [Calculadora de Média e Desvio Padrão](Desvio_Padrao)")
 st.write("- [Gerador de Dados Aleatórios](Gerador)")
 st.write("- [Simulador de Lançamento de Dados e Moedas](Lançamento)")
 st.write("- [Calculadora de Intervalo de Confiança](Intervalo_de_Confiança)")
-st.write("- [Comaparador de Intervalo de Confiança](Intervalo_de_Confiança_2)")
+st.write("- [Comparador de Intervalo de Confiança de duas Amostras](Intervalo_de_Confiança_2)")
+st.write("- [Comparador do Nivel de Confiança do Intervalo de Confiança](Intervalo_de_Confiança_3)")
 
 # Rodapé
 st.write("---")
