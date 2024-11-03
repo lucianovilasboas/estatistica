@@ -15,6 +15,7 @@ size = st.sidebar.number_input("Tamanho do Conjunto de Dados:", min_value=1, val
 if st.sidebar.button("Gerar Dados"):
     # Gerando o conjunto de dados sintético
     data = np.random.normal(loc=mean, scale=std_dev, size=size)
+    data = np.round(data, 2)
     df = pd.DataFrame(data, columns=["Valor"])
 
     # Mostrando o conjunto de dados
@@ -23,15 +24,15 @@ if st.sidebar.button("Gerar Dados"):
 
     # Exibindo os dados em uma área de texto
     st.write("Dados Gerados:")
-    st.text_area("Valores:", "\n".join(map(str, data)), height=200)
+    st.text_area("Valores:", ", ".join(map(str, data)), height=200)
 
     # Criando um histograma com distribuição normal
-    st.write("Histograma dos Dados (Distribuição Aproximada)")
+    st.write("### Histograma dos Dados (Distribuição Aproximada)")
     fig, ax = plt.subplots()
     ax.hist(data, bins=30, density=True, alpha=0.6, color='blue', edgecolor='black')
     
     # Linhas para a curva da distribuição normal
-    x = np.linspace(mean - 4*std_dev, mean + 4*std_dev, 1000)
+    x = np.linspace(mean - 4*std_dev, mean + 4*std_dev, size)
     y = (1 / (np.sqrt(2 * np.pi * std_dev**2))) * np.exp(-0.5 * ((x - mean) / std_dev)**2)
     ax.plot(x, y, 'r--', label="Distribuição Normal")
     
@@ -48,3 +49,5 @@ if st.sidebar.button("Gerar Dados"):
         file_name='dados_sinteticos.csv',
         mime='text/csv',
     )
+else:
+    st.info("Aguardando a geração dos dados.")

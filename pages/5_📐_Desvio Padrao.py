@@ -47,3 +47,5 @@ if st.sidebar.button("Calcular"):
     st.latex(f"\\sum (X_i - \\bar{{X}})^2 = {' + '.join([f'({x} - {round(media,2)})^2' for x in dados])} = {round(somatorio,2)}")
     st.latex(f"\\sigma^2 = \\frac{{{somatorio}}}{{{len(dados)}}} = {round(variancia,2)}")
     st.latex(f"\\text{{Desvio Padrão}}: \\sigma = \\sqrt{{\\sigma^2}} = \\sqrt{{{round(variancia,2)}}} = {round(desvio_padrao,2)}")
+else:
+    st.info("Aguardando o calculo.")

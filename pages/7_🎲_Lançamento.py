@@ -54,3 +54,5 @@ if st.sidebar.button("Lançar!"):
         ax.set_ylabel("Frequência")
         ax.set_title("Distribuição dos Resultados dos Lançamentos de Moeda")
         st.pyplot(fig)
+else:
+    st.info("Aguardando o lançamento.")
