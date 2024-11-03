@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Título da aplicação
+st.set_page_config(page_title="Gerador de Dados Sintéticos", page_icon="🔢")
 st.title("Gerador de Dados Sintéticos")
 
 # Parâmetros de entrada do usuário

@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Configurações iniciais da página
-st.set_page_config(page_title="Apps de Estatística", page_icon="📊")
+st.set_page_config(page_title="Apps de Estatística", page_icon="📊", layout="wide")
 
 # Título da página
 st.title("📊 Apps de Estatística")
@@ -19,14 +19,24 @@ Os aplicativos disponíveis nesta página foram criados com o intuito de facilit
 
 # Informações sobre o professor
 st.header("Sobre o Professor Luciano")
-st.write("""
-O professor Luciano Vilas Boas é o responsável pela disciplina e desenvolveu esses aplicativos como uma ferramenta de apoio 
-para tornar a aprendizagem mais interativa e acessível. 
 
-Professor Luciano possui Graduação e Mestrado em Ciência da Computação pela UFOP com experiência em Ciência da Computação e Docência, tendo atuado em diversas áreas, 
-como Programação, Desenvolvimento Web, Recuperação da Informação, Aprendizado de Máquina e Ciência de Dados. 
-Atualmente, é Docente e Diretor Geral no IFMG Campus Ponte Nova.
-""")
+# Layout para imagem e texto ao lado
+col1, col2 = st.columns([1, 5])
+
+with col1:
+    # Adicionar uma imagem
+    st.image("https://media.licdn.com/dms/image/v2/D4D03AQEEN3I1PKUXxA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1721777516419?e=1736380800&v=beta&t=xmU2SBw4GCRvD-bv2TuJbbwWrcfHN2PzzEbto5KSPw0", caption="Foto do Professor Luciano", use_column_width=False)
+
+with col2:
+    st.write("""
+    O professor Luciano Vilas Boas é o responsável pela disciplina e desenvolveu esses aplicativos como uma ferramenta de apoio 
+    para tornar a aprendizagem mais interativa e acessível. 
+
+    Professor Luciano possui Graduação e Mestrado em Ciência da Computação pela UFOP com experiência em Ciência da Computação e Docência, tendo atuado em diversas áreas, 
+    como Programação, Desenvolvimento Web, Recuperação da Informação, Aprendizado de Máquina e Ciência de Dados. 
+    Atualmente, é Docente e Diretor Geral no IFMG Campus Ponte Nova.
+    """)
+
 st.write("🔗 [Acesse o perfil do Professor Luciano no Streamlit](https://share.streamlit.io/user/lucianovilasboas)")
 
 # Informações de contato

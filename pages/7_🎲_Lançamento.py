@@ -3,6 +3,12 @@ import random
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# Interface do Streamlit
+st.set_page_config(page_title="Simulação de Lançamento", page_icon="🎲")
+st.title("Simulação de Lançamento")
+st.write("Este aplicativo simula o lançamento de um dado ou uma moeda.")
+
+
 # Função para simular lançamentos de dados
 def simulate_dice_rolls(n):
     rolls = [random.randint(1, 6) for _ in range(n)]
@@ -15,9 +21,6 @@ def simulate_coin_flips(n):
     flip_counts = {"Cara": flips.count("Cara"), "Coroa": flips.count("Coroa")}
     return pd.DataFrame(list(flip_counts.items()), columns=["Resultado", "Count"])
 
-# Interface do Streamlit
-st.title("Simulação de Lançamento")
-st.write("Este aplicativo simula o lançamento de um dado ou uma moeda.")
 
 # Escolha entre dado ou moeda
 choice = st.sidebar.selectbox("Escolha o que deseja lançar:", ["Dado", "Moeda"])
