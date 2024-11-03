@@ -29,11 +29,11 @@ with col1:
 
 with col2:
     st.write("""
-    O professor Luciano Vilas Boas é o responsável pela disciplina e desenvolveu esses aplicativos como uma ferramenta de apoio 
+    O professor Luciano é o responsável pela disciplina e desenvolveu esses aplicativos como uma ferramenta de apoio 
     para tornar a aprendizagem mais interativa e acessível. 
 
-    Professor Luciano possui Graduação e Mestrado em Ciência da Computação pela UFOP com experiência em Ciência da Computação e Docência, tendo atuado em diversas áreas, 
-    como Programação, Desenvolvimento Web, Recuperação da Informação, Aprendizado de Máquina e Ciência de Dados. 
+    Professor Luciano possui Graduação e Mestrado em Ciência da Computação pela UFOP com experiência em Ciência da Computação e Docência, 
+    tendo atuado em diversas áreas, como Programação, Desenvolvimento Web, Recuperação da Informação, Aprendizado de Máquina e Ciência de Dados. 
     Atualmente, é Docente e Diretor Geral no IFMG Campus Ponte Nova.
     """)
 
@@ -51,12 +51,15 @@ st.header("Aplicativos de Apoio em Estatística")
 st.write("Explore os aplicativos disponíveis para aprofundar seu entendimento em Estatística e Probabilidade:")
 
 # Exemplos de links de aplicativos
-st.write("- [Simulador de Lançamento de Dados e Moedas](Lancamento)")
-st.write("- [Sumarização de dados](Sumarizacao)")
+st.write("- [Calculadora de Somatórios 1](∑_Somatorium)")
+st.write("- [Calculadora de Somatórios X, Y](∑_Somatorium_xy)")
+st.write("- [Sumarização de dados](Sumarização)")
+st.write("- [Gerador de Histogramas](Histograma)")
 st.write("- [Calculadora de Média e Desvio Padrão](Desvio_Padrao)")
-st.write("- [Distribuições de Probabilidade](Gerador)")
-st.write("- [Canculador de Somatórios 1](Sumatoruium)")
-st.write("- [Canculador de Somatórios 2](Sumatoruium_xy)")
+st.write("- [Gerador de Dados Aleatórios](Gerador)")
+st.write("- [Simulador de Lançamento de Dados e Moedas](Lançamento)")
+st.write("- [Calculadora de Intervalo de Confiança](Intervalo_de_Confiança)")
+st.write("- [Comaparador de Intervalo de Confiança](Intervalo_de_Confiança_2)")
 
 # Rodapé
 st.write("---")
