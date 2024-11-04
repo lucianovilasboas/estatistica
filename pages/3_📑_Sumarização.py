@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
 
-st.set_page_config(layout="wide")
+st.set_page_config(page_title="Sumarização de dados", page_icon="📑",layout="wide")
 
 # Título do aplicativo
 st.markdown("<h1 style='text-align: center;'>📑 Sumarização de dados</h1>", unsafe_allow_html=True)

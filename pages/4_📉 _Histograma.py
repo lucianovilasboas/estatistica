@@ -2,7 +2,8 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_page_config(layout="wide")
+st.set_page_config(page_title="Gerador de Histograma", page_icon="📉",layout="wide")
+
 
 # Título do aplicativo
 st.markdown("<h1 style='text-align: center;'>📉 Gerador de Histograma</h1>", unsafe_allow_html=True)

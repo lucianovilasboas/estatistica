@@ -1,9 +1,9 @@
 import streamlit as st
 
-st.set_page_config(layout="wide")
+st.set_page_config(page_title="Somatório de forma prática", page_icon="∑",layout="wide")
 
 # Título do aplicativo
-st.title("Somatório de forma prática")
+st.title("∑ Somatório de forma prática")
 st.write("Este aplicativo realiza o cálculo do somatório de uma variável X, com base nos limites inferior e superior.")
 
 # Entrada para os dados (X)
