@@ -8,6 +8,7 @@ st.set_page_config(layout="wide")
 
 # Título do aplicativo
 st.markdown("<h1 style='text-align: center;'>📑 Sumarização de dados</h1>", unsafe_allow_html=True)
+st.write("Este aplicativo realiza a sumarização de dados estatísticos, como média, mediana, moda, quartis, mínimo, máximo, desvio padrão e variância.")
 
 # Entrada dos dados
 st.sidebar.write("# Entre com os dados")

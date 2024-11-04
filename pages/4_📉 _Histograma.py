@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 
 # Título do aplicativo
 st.markdown("<h1 style='text-align: center;'>📉 Gerador de Histograma</h1>", unsafe_allow_html=True)
-
+st.write("Este aplicativo gera um histograma a partir dos dados inseridos, permitindo ajustar o número de bins e o tamanho de cada bin.")
 
 # Entrada dos dados
 st.sidebar.write("# Entre com os dados")

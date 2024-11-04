@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(page_title="Simulação de Lançamento", page_icon="🎲")
 
 st.markdown("<h1 style='text-align: center;'>🎲 Simulação de Lançamento</h1>", unsafe_allow_html=True)
-st.write("Este aplicativo simula o lançamento de um dado ou uma moeda.")
+st.write("Este aplicativo simula o lançamento de um dado ou uma moeda um numero de vezes definido pelo usuário.")
 
 
 # Função para simular lançamentos de dados
