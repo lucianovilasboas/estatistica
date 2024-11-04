@@ -10,13 +10,19 @@ st.set_page_config(page_title="Calculadora de Intervalo de Confiança", page_ico
 st.title("🔍 Comparando o IC para duas amostras.")
 st.write("Este aplicativo calcula o intervalo de confiança para uma média com base nos parâmetros fornecidos.")
 
+col1, col2 = st.columns(2)
+
 # Entrada de dados do usuário
-mean = st.number_input("Digite a média da amostra (μ)", value=50.0)
-mean_2 = st.number_input("Digite a média de outra amostra (μ2)", value=55.0)
-std_dev = st.number_input("Digite o desvio padrão da amostra (s)", value=10.0, min_value=0.0)
-std_dev_2 = st.number_input("Digite o desvio padrão de outra amostra (s2)", value=12.0, min_value=0.0)
-sample_size = st.number_input("Digite o tamanho da amostra (n)", min_value=1, value=30, step=1)
-sample_size_2 = st.number_input("Digite o tamanho da segunda amostra (n2)", min_value=1, value=35, step=1)
+with col1:
+    mean = st.number_input("Digite a média da amostra (μ1)", value=50.0)
+    std_dev = st.number_input("Digite o desvio padrão da amostra (s1)", value=10.0, min_value=0.0)
+    sample_size = st.number_input("Digite o tamanho da amostra (n1)", min_value=1, value=30, step=1)
+
+with col2:
+    mean_2 = st.number_input("Digite a média de outra amostra (μ2)", value=55.0)
+    std_dev_2 = st.number_input("Digite o desvio padrão de outra amostra (s2)", value=12.0, min_value=0.0)
+    sample_size_2 = st.number_input("Digite o tamanho da segunda amostra (n2)", min_value=1, value=35, step=1)
+
 confidence_level = st.selectbox("Escolha o nível de confiança (%)", [90, 95, 99])
 
 # Botão para calcular o intervalo de confiança
@@ -68,8 +74,13 @@ if st.button("Calcular IC"):
     ax.fill_betweenx([0, 1], lower_bound_2, upper_bound_2, color='green', alpha=0.3, label='IC Amostra 2')
     ax.set_xlabel('Valor')
     ax.set_yticks([])
+
+    # Anotações para as médias
+    ax.text(mean, 0.5, f'Média 1: {mean:.2f}', color='blue', ha='center', va='bottom', fontsize=10, fontweight='bold')
+    ax.text(mean_2, 0.5, f'Média 2: {mean_2:.2f}', color='purple', ha='center', va='bottom', fontsize=10, fontweight='bold')
+    
     ax.set_title(f"Intervalo de Confiança de {confidence_level}% para as Amostras")
-    ax.legend()
+    ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=1)
 
     st.pyplot(fig)
 
