@@ -68,7 +68,7 @@ if st.button("Calcular IC"):
     ax.set_xlabel('Valor')
     ax.set_yticks([])
     ax.set_title("Intervalos de Confiança")
-    ax.legend()
+    ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=1) 
 
     st.pyplot(fig)
 else:
