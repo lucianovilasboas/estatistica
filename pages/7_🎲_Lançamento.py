@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 
 # Interface do Streamlit
 st.set_page_config(page_title="Simulação de Lançamento", page_icon="🎲")
-st.title("Simulação de Lançamento")
+
+st.markdown("<h1 style='text-align: center;'>🎲 Simulação de Lançamento</h1>", unsafe_allow_html=True)
 st.write("Este aplicativo simula o lançamento de um dado ou uma moeda.")
 
 

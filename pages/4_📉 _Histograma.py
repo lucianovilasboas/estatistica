@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 st.set_page_config(layout="wide")
 
 # Título do aplicativo
-st.title("Gerador de Histograma")
+st.markdown("<h1 style='text-align: center;'>📉 Gerador de Histograma</h1>", unsafe_allow_html=True)
+
 
 # Entrada dos dados
 st.sidebar.write("# Entre com os dados")

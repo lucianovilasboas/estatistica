@@ -7,7 +7,7 @@ from scipy import stats
 st.set_page_config(layout="wide")
 
 # Título do aplicativo
-st.title("Sumarização de dados")
+st.markdown("<h1 style='text-align: center;'>📑 Sumarização de dados</h1>", unsafe_allow_html=True)
 
 # Entrada dos dados
 st.sidebar.write("# Entre com os dados")
