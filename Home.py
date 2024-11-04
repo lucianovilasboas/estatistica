@@ -51,7 +51,7 @@ st.header("Aplicativos de Apoio em Estatística")
 st.write("Explore os aplicativos disponíveis para aprofundar seu entendimento em Estatística e Probabilidade:")
 
 # Exemplos de links de aplicativos
-st.write("- [Calculadora de Somatórios 1](∑_Somatorium)")
+st.write("- [Calculadora de Somatórios X](∑_Somatorium)")
 st.write("- [Calculadora de Somatórios X, Y](∑_Somatorium_xy)")
 st.write("- [Sumarização de dados](Sumarização)")
 st.write("- [Gerador de Histogramas](Histograma)")
