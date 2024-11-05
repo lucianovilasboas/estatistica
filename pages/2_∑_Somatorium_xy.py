@@ -2,14 +2,13 @@ import streamlit as st
 
 
 st.set_page_config(page_title="Somatório XY de forma prática", page_icon="∑",layout="wide")
-
 # Título do aplicativo
 st.title("Somatório de forma prática") 
+st.write("Esse aplicativo realiza o cálculo do somatório de uma variável X ou Y, com base nos limites inferior e superior.")
+st.write("---")
 
 # Entrada para os dados (X)
 st.sidebar.write("# Entre com os dados")
-st.write("Esse aplicativo realiza o cálculo do somatório de uma variável X ou Y, com base nos limites inferior e superior.")
-
 st.sidebar.write("Insira os valores da variável X, separados por vírgulas:")
 dados_input_X = st.sidebar.text_area("Exemplo para X: 1, 2, 3, 4, 5", value="1, 2, 3, 4, 5")
 

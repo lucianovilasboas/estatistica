@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 
 # Configurações da página
 st.set_page_config(page_title="Calculadora de Intervalo de Confiança", page_icon="🔍")
-
 # Título da página
 st.title("🔍 Comparando o IC para duas amostras.")
 st.write("Este aplicativo calcula o intervalo de confiança para uma média com base nos parâmetros fornecidos.")
+st.write("---")
 
 col1, col2 = st.columns(2)
 

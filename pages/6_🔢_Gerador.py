@@ -8,7 +8,7 @@ st.set_page_config(page_title="Gerador de Dados Sintéticos", page_icon="🔢", 
 # Alinhar o título da página ao centro
 st.markdown("<h1 style='text-align: center;'>🔢 Gerador de Dados Sintéticos</h1>", unsafe_allow_html=True)
 st.write("Este aplicativo gera um conjunto de dados sintéticos com base nos parâmetros fornecidos pelo usuário.")
-
+st.write("---")
 # Parâmetros de entrada do usuário
 mean = st.sidebar.number_input("Média:", value=0.0)
 std_dev = st.sidebar.number_input("Desvio Padrão:", value=1.0)

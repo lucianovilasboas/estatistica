@@ -32,6 +32,8 @@ def monty_hall_simulation(num_trials, switch):
 st.title('🚪 Simulação do Problema de Monty Hall')
 st.write('Este aplicativo simula o famoso problema de Monty Hall, onde um jogador tem que escolher entre três portas para encontrar um carro.')
 st.image("https://github.com/lucianovilasboas/medium-monty-hall/blob/main/Monty_hall_problem.jpg?raw=true", caption="Problema de Monty Hall", use_column_width=False)
+st.write("---")
+
 
 # Entrada do número de simulações
 num_trials = st.number_input('Escolha o número de simulações', min_value=1, value=1000)

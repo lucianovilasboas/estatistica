@@ -5,6 +5,7 @@ st.set_page_config(page_title="Somatório de forma prática", page_icon="∑",la
 # Título do aplicativo
 st.title("∑ Somatório de forma prática")
 st.write("Este aplicativo realiza o cálculo do somatório de uma variável X, com base nos limites inferior e superior.")
+st.write("---")
 
 # Entrada para os dados (X)
 st.sidebar.write("Insira os valores da variável X, separados por vírgulas:")

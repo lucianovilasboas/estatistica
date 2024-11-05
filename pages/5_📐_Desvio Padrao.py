@@ -2,10 +2,10 @@ import streamlit as st
 import math
 
 st.set_page_config(page_title="Cálculo de Variância e Desvio Padrão", page_icon="📐",layout="wide")
-
 # Título do aplicativo
 st.markdown("<h1 style='text-align: center;'>📐 Cálculo de Variância e Desvio Padrão</h1>", unsafe_allow_html=True)
 st.write("Este aplicativo realiza o cálculo da variância e do desvio padrão de um conjunto de dados inseridos.")
+st.write("---")
 
 # Entrada para os dados
 st.sidebar.write("## Insira os dados separados por vírgulas:")

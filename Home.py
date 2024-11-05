@@ -61,6 +61,7 @@ st.write("- [Simulador de Lançamento de Dados e Moedas](Lançamento)")
 st.write("- [Calculadora de Intervalo de Confiança](Intervalo_de_Confiança)")
 st.write("- [Comparador de Intervalo de Confiança de duas Amostras](Intervalo_de_Confiança_2)")
 st.write("- [Comparador do Nivel de Confiança do Intervalo de Confiança](Intervalo_de_Confiança_3)")
+st.write("- [Simulação do Problema de Monty Hall](Monty_Hall)")
 
 # Rodapé
 st.write("---")

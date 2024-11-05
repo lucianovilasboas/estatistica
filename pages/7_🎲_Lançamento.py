@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 
 # Interface do Streamlit
 st.set_page_config(page_title="Simulação de Lançamento", page_icon="🎲")
-
 st.markdown("<h1 style='text-align: center;'>🎲 Simulação de Lançamento</h1>", unsafe_allow_html=True)
 st.write("Este aplicativo simula o lançamento de um dado ou uma moeda um numero de vezes definido pelo usuário.")
+st.write("---")
 
 
 # Função para simular lançamentos de dados
@@ -29,34 +29,43 @@ choice = st.sidebar.selectbox("Escolha o que deseja lançar:", ["Dado", "Moeda"]
 # Entrada do usuário para o número de lançamentos
 n = st.sidebar.number_input("Número de lançamentos", min_value=1, step=1, value=100)
 
+# Layout para imagem e texto ao lado
+col1, col2 = st.columns([2, 4])
+
 # Botão para iniciar a simulação
 if st.sidebar.button("Lançar!"):
     if choice == "Dado":
-        # Simular lançamentos de dado
-        results_df = simulate_dice_rolls(n)
-        st.write("Resultados dos lançamentos de dado:")
-        st.dataframe(results_df)
 
-        # Gráfico de barras dos resultados do dado
-        fig, ax = plt.subplots()
-        ax.bar(results_df["Face"], results_df["Count"])
-        ax.set_xlabel("Face do Dado")
-        ax.set_ylabel("Frequência")
-        ax.set_title("Distribuição dos Resultados dos Lançamentos de Dado")
-        st.pyplot(fig)
+        with col1:
+            # Simular lançamentos de dado
+            results_df = simulate_dice_rolls(n)
+            st.write("Resultados dos lançamentos de dado:")
+            st.dataframe(results_df)
+        
+        with col2:
+            # Gráfico de barras dos resultados do dado
+            fig, ax = plt.subplots()
+            ax.bar(results_df["Face"], results_df["Count"])
+            ax.set_xlabel("Face do Dado")
+            ax.set_ylabel("Frequência")
+            ax.set_title("Distribuição dos Resultados dos Lançamentos de Dado")
+            st.pyplot(fig)
         
     elif choice == "Moeda":
-        # Simular lançamentos de moeda
-        results_df = simulate_coin_flips(n)
-        st.write("Resultados dos lançamentos de moeda:")
-        st.dataframe(results_df)
 
-        # Gráfico de barras dos resultados da moeda
-        fig, ax = plt.subplots()
-        ax.bar(results_df["Resultado"], results_df["Count"])
-        ax.set_xlabel("Resultado")
-        ax.set_ylabel("Frequência")
-        ax.set_title("Distribuição dos Resultados dos Lançamentos de Moeda")
-        st.pyplot(fig)
+        with col1:
+            # Simular lançamentos de moeda
+            results_df = simulate_coin_flips(n)
+            st.write("Resultados dos lançamentos de moeda:")
+            st.dataframe(results_df)
+
+        with col2:
+            # Gráfico de barras dos resultados da moeda
+            fig, ax = plt.subplots()
+            ax.bar(results_df["Resultado"], results_df["Count"])
+            ax.set_xlabel("Resultado")
+            ax.set_ylabel("Frequência")
+            ax.set_title("Distribuição dos Resultados dos Lançamentos de Moeda")
+            st.pyplot(fig)
 else:
     st.info("Aguardando o lançamento.")
