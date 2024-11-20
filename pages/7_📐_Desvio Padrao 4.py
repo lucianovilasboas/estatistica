@@ -18,7 +18,7 @@ eh_amostra = st.sidebar.checkbox("Os dados correspondem a uma amostra?", value=F
 # Converter os dados de entrada em uma lista de tuplas (ponto médio, frequência)
 try:
     dados_agrupados = []
-    for linha in dados_input.split('\n'):
+    for linha in dados_input.split('\n'): 
         faixa, frequencia = linha.split(':')
         limite_inferior, limite_superior = map(float, faixa.split('--'))
         frequencia = float(frequencia)
