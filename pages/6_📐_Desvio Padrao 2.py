@@ -1,11 +1,12 @@
 import streamlit as st
 import math
+import re
 
 # Configuração da página do aplicativo
-st.set_page_config(page_title="Cálculo de Variância e Desvio Padrão para Dados Agrupados", page_icon="📀", layout="wide")
+st.set_page_config(page_title="Cálculo do Desvio Padrão para Dados Agrupados", page_icon="📀", layout="wide")
 
 # Título do aplicativo
-st.markdown("<h1 style='text-align: center;'>📀 Cálculo de Variância e Desvio Padrão para Dados Agrupados</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>📀 Cálculo do Desvio Padrão para Dados Agrupados</h1>", unsafe_allow_html=True)
 st.write("Este aplicativo realiza o cálculo da variância e do desvio padrão para dados agrupados inseridos. Informe também se os dados são de uma amostra ou da população.")
 st.write("---")
 
@@ -18,7 +19,10 @@ eh_amostra = st.sidebar.checkbox("Os dados correspondem a uma amostra?", value=F
 
 # Converter os dados de entrada em uma lista de tuplas (valor, frequência)
 try:
-    dados_agrupados = [tuple(map(float, item.split(':'))) for item in dados_input.split(',')]
+    dados_input_split = re.split(r",\s*|\n\s*", dados_input.strip())
+    dados_input_split = [x.strip() for x in dados_input_split if x.strip()]
+    dados_agrupados = [tuple(map(float, item.split(':'))) for item in dados_input_split]
+
 except ValueError:
     st.error("Por favor, insira os valores e frequências corretamente no formato valor:frequência, separados por vírgulas.")
     st.stop()
@@ -56,11 +60,11 @@ if st.sidebar.button("Calcular"):
         # Exibir os resultados
         st.write("## Cálculo:")
         dados_somatorio_str = ' + '.join([f'{valor} \\times {frequencia}' for valor, frequencia in dados_agrupados])
-        dados_variancia_str = ' + '.join([f'{frequencia} \\times ({valor} - {round(media, 2)})^2' for valor, frequencia in dados_agrupados])
+        dados_variancia_str = ' + '.join([f'({valor} - {round(media, 2)})^2 \\times {frequencia}' for valor, frequencia in dados_agrupados])
 
-        st.latex(f"\\text{{Média}}: \\bar{{X}} = \\frac{{\\sum (X \\times f)}}{{\\sum f}} = \\frac{{{dados_somatorio_str}}}{{{total_frequencia}}} = {round(media, 2)}")
-        st.latex(f"\\text{{Variância}}: s^2 = \\frac{{\\sum f (X_i - \\bar{{X}})^2}}{{{'n - 1' if eh_amostra else 'n'}}}")
-        st.latex(f"\\sum f (X_i - \\bar{{X}})^2 = {dados_variancia_str} = {round(somatorio, 3)}")
+        st.latex(f"\\text{{Média}}: \\bar{{X}} = \\frac{{\\sum (x_i \\times f_i)}}{{\\sum f_i}} = \\frac{{{dados_somatorio_str}}}{{{total_frequencia}}} = {round(media, 2)}")
+        st.latex(f"\\text{{Variância}}: s^2 = \\frac{{\\sum (x_i - \\bar{{X}})^2 \\times f_i}}{{{'n - 1' if eh_amostra else 'n'}}}")
+        st.latex(f"\\sum (x_i - \\bar{{X}})^2 \\times f_i = {dados_variancia_str} = {round(somatorio, 3)}")
         st.latex(f"s^2 = \\frac{{{round(somatorio, 3)}}}{{{total_frequencia - 1 if eh_amostra else total_frequencia}}} = {round(variancia, 3)}")
         st.latex(f"\\text{{Desvio Padrão}}: s = \\sqrt{{s^2}} = \\sqrt{{{round(variancia, 3)}}} = {round(desvio_padrao, 3)}")
 else:
