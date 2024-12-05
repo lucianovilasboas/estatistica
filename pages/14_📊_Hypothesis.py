@@ -61,11 +61,11 @@ if valid_data:
         # Passo 5: Interpretação
         st.header("5️⃣ Conclusão 🧠")
         if p_value < alpha:
-            st.write(f"🎉 Como o p-valor ({p_value:.4f}) é menor que α ({alpha}), rejeitamos H0.")
-            st.write("➡️ **Há diferença significativa entre as amostras.**")
+            st.write(f"#### 🎉 Como o p-valor ({p_value:.4f}) é menor que α ({alpha}), rejeitamos H0.")
+            st.write("##### ➡️ **Há diferença significativa entre as amostras.**")
         else:
-            st.write(f"😌 Como o p-valor ({p_value:.4f}) é maior ou igual a α ({alpha}), não rejeitamos H0.")
-            st.write("➡️ **Não há diferença significativa entre as amostras.**")
+            st.write(f"#### 😌 Como o p-valor ({p_value:.4f}) é maior ou igual a α ({alpha}), não rejeitamos H0.")
+            st.write("##### ➡️ **Não há diferença significativa entre as amostras.**")
 
         # Passo 6: Visualizar os dados
         st.header("6️⃣ Visualização Gráfica 📊")
