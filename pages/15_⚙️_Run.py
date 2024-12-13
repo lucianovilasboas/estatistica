@@ -76,7 +76,7 @@ if uploaded_file:
 
     # Histograma
     st.write("---")
-    st.write("#### Histogramas")
+    st.write("#### Histogramas 1")
     if len(cols) > 0:
         fig, axes = plt.subplots(1, len(cols), figsize=(5 * len(cols), 5))
         if len(cols) == 1:
@@ -106,9 +106,9 @@ if uploaded_file:
 
 
     # Comparação do Volume Médio de Compras por Filial
-    st.write("---")
-    # st.write("#### Comparação do Volume Médio de Compras por Filial")
     if len(df.columns) > 1:
+        st.write("---")
+        # st.write("#### Comparação do Volume Médio de Compras por Filial")
         media_por_filial = df.iloc[:,:].mean()
         fig, ax = plt.subplots(figsize=(10, 6))
         media_por_filial.plot(kind='bar', color='skyblue', edgecolor='black', ax=ax)
@@ -119,9 +119,9 @@ if uploaded_file:
         st.pyplot(fig)
 
     # Correlação Entre Filiais
-    st.write("---")
-    st.write("#### Correlação Entre Filiais")
     if len(df.columns) > 1:
+        st.write("---")
+        # st.write("#### Correlação Entre Filiais")
         correlation_matrix = df.iloc[:,:].corr()
         fig, ax = plt.subplots(figsize=(10, 8))
         sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f', ax=ax)
@@ -141,9 +141,9 @@ if uploaded_file:
         st.pyplot(fig)
 
     # Ranking de Filiais por Total de Compras no Ano
-    st.write("---")
-    # st.write("#### Ranking de Filiais por Total de Compras no Ano")
     if len(df.columns) > 1:
+        st.write("---")
+        # st.write("#### Ranking de Filiais por Total de Compras no Ano")
         total_por_filial = df.iloc[:,:].sum()
         fig, ax = plt.subplots(figsize=(10, 6))
         total_por_filial.sort_values().plot(kind='barh', color='salmon', edgecolor='black', ax=ax)
