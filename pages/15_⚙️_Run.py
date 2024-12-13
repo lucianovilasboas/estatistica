@@ -74,21 +74,6 @@ if uploaded_file:
         ax.grid(True, linestyle='--', linewidth=0.5)
         st.pyplot(fig)
 
-    # Histograma
-    # st.write("---")
-    # st.write("#### Histogramas 1")
-    # if len(cols) > 0:
-    #     fig, axes = plt.subplots(1, len(cols), figsize=(5 * len(cols), 5))
-    #     if len(cols) == 1:
-    #         axes = [axes]
-    #     for ax, col in zip(axes, cols):
-    #         sns.histplot(df[col], kde=True, ax=ax, color='skyblue', edgecolor='black')
-    #         ax.set_title(f"Histograma de {col}")
-    #         ax.grid(True, linestyle='--', linewidth=0.5)
-    #     st.pyplot(fig)
-
-
-
     if len(cols) > 0:
         st.write("---")
         st.write("#### Histogramas")
@@ -153,6 +138,64 @@ if uploaded_file:
         ax.set_ylabel("Filial")
         ax.grid(True, linestyle='--', linewidth=0.5)
         st.pyplot(fig)
+
+
+
+
+    # Adicionando teste de hipóteses
+    st.write("---")
+    st.write("### Teste de Hipóteses 📊")
+    st.write("""
+    Realize um teste t de Student para comparar as médias de duas colunas numéricas no conjunto de dados. 
+    O teste verifica se há diferença significativa entre as médias das colunas selecionadas.
+    """)
+
+    # Selecionar as colunas numéricas
+    numeric_columns = df.select_dtypes(include=[np.number]).columns.tolist()
+
+    if len(numeric_columns) >= 2:
+        col1 = st.selectbox("Selecione a primeira coluna:", numeric_columns, key="col1")
+        col2 = st.selectbox("Selecione a segunda coluna:", numeric_columns, key="col2")
+        alpha = st.slider("Escolha o nível de significância (α):", 0.01, 0.10, 0.05, key="alpha")
+        
+        if st.button("Executar Teste de Hipóteses"):
+            # Dados das colunas selecionadas
+            data1 = df[col1].dropna()
+            data2 = df[col2].dropna()
+            
+            # Realizar o teste t de Student
+            t_stat, p_value = stats.ttest_ind(data1, data2, equal_var=False)
+            
+            # Exibir resultados
+            st.write("#### Resultado do Teste de Hipóteses")
+            result_df = pd.DataFrame({
+                "Estatística t": [t_stat],
+                "p-valor": [p_value],
+                "Conclusão": ["Rejeitamos H0" if p_value < alpha else "Não rejeitamos H0"],
+                "Explicação" : ["Há diferença significativa entre as médias" if p_value < alpha else "Não há diferença significativa entre as médias"]
+            })
+            st.table(result_df)
+            
+            # Visualizar os dados
+            st.write("### Visualização Gráfica 📈")
+            # Gráfico de barras com médias e intervalos de confiança
+            means = [np.mean(data1), np.mean(data2)]
+            std_errors = [
+                np.std(data1, ddof=1) / np.sqrt(len(data1)),
+                np.std(data2, ddof=1) / np.sqrt(len(data2))
+            ]
+            
+            fig, ax = plt.subplots()
+            bars = ax.bar([col1, col2], means, yerr=std_errors, capsize=10, color=["blue", "green"])
+            ax.set_title("Médias com Intervalos de Confiança")
+            ax.set_ylabel("Média")
+            ax.grid(axis="y", linestyle="--", alpha=0.6)
+            st.pyplot(fig)
+    else:
+        st.info("Por favor, selecione ao menos duas colunas numéricas para realizar o teste de hipóteses.")
+
+
+
 
 else:
     st.info("Por favor, faça upload de um arquivo para começar.")
