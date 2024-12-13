@@ -75,22 +75,23 @@ if uploaded_file:
         st.pyplot(fig)
 
     # Histograma
-    st.write("---")
-    st.write("#### Histogramas 1")
+    # st.write("---")
+    # st.write("#### Histogramas 1")
+    # if len(cols) > 0:
+    #     fig, axes = plt.subplots(1, len(cols), figsize=(5 * len(cols), 5))
+    #     if len(cols) == 1:
+    #         axes = [axes]
+    #     for ax, col in zip(axes, cols):
+    #         sns.histplot(df[col], kde=True, ax=ax, color='skyblue', edgecolor='black')
+    #         ax.set_title(f"Histograma de {col}")
+    #         ax.grid(True, linestyle='--', linewidth=0.5)
+    #     st.pyplot(fig)
+
+
+
     if len(cols) > 0:
-        fig, axes = plt.subplots(1, len(cols), figsize=(5 * len(cols), 5))
-        if len(cols) == 1:
-            axes = [axes]
-        for ax, col in zip(axes, cols):
-            sns.histplot(df[col], kde=True, ax=ax, color='skyblue', edgecolor='black')
-            ax.set_title(f"Histograma de {col}")
-            ax.grid(True, linestyle='--', linewidth=0.5)
-        st.pyplot(fig)
-
-
-
-    st.write("#### Histogramas 2")
-    if len(cols) > 0:
+        st.write("#### Histogramas")
+        st.write("---")
         # Configurar bins e limites globais
         global_min = df[cols].min().min()
         global_max = df[cols].max().max()
