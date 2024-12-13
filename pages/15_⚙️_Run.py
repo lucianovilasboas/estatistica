@@ -37,10 +37,12 @@ if uploaded_file:
     if "Semana" in df.columns:
         df = df.drop(columns=["Semana"])
 
+    st.write("---")
     st.write("### Prévia dos Dados 🗂️")
     st.dataframe(df.head())
 
     # Sumarização dos dados
+    st.write("---")
     st.write("### Estatísticas Descritivas 📊")
     summary = df.describe().T
     summary = summary.round(1)  # Arredondar para uma casa decimal
@@ -59,6 +61,7 @@ if uploaded_file:
     st.dataframe(summary)
 
     # Gráficos
+    st.write("---")
     st.write("### Visualização Gráfica 📈")
 
     # Boxplot combinado
@@ -72,6 +75,7 @@ if uploaded_file:
         st.pyplot(fig)
 
     # Histograma
+    st.write("---")
     st.write("#### Histogramas")
     if len(cols) > 0:
         fig, axes = plt.subplots(1, len(cols), figsize=(5 * len(cols), 5))
@@ -84,7 +88,8 @@ if uploaded_file:
         st.pyplot(fig)
 
 
-    st.write("#### Histogramas")
+
+    st.write("#### Histogramas 2")
     if len(cols) > 0:
         # Configurar bins e limites globais
         global_min = df[cols].min().min()
@@ -101,6 +106,7 @@ if uploaded_file:
 
 
     # Comparação do Volume Médio de Compras por Filial
+    st.write("---")
     st.write("#### Comparação do Volume Médio de Compras por Filial")
     if len(df.columns) > 1:
         media_por_filial = df.iloc[:,:].mean()
@@ -113,6 +119,7 @@ if uploaded_file:
         st.pyplot(fig)
 
     # Correlação Entre Filiais
+    st.write("---")
     st.write("#### Correlação Entre Filiais")
     if len(df.columns) > 1:
         correlation_matrix = df.iloc[:,:].corr()
@@ -123,6 +130,7 @@ if uploaded_file:
 
     # Análise de Sazonalidade
     if "Semana" in df.columns:
+        st.write("---")
         st.write("#### Análise de Sazonalidade")
         pivot_data = df.set_index("Semana").T
         fig, ax = plt.subplots(figsize=(12, 8))
@@ -133,6 +141,7 @@ if uploaded_file:
         st.pyplot(fig)
 
     # Ranking de Filiais por Total de Compras no Ano
+    st.write("---")
     st.write("#### Ranking de Filiais por Total de Compras no Ano")
     if len(df.columns) > 1:
         total_por_filial = df.iloc[:,:].sum()
