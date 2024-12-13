@@ -90,8 +90,8 @@ if uploaded_file:
 
 
     if len(cols) > 0:
-        st.write("#### Histogramas")
         st.write("---")
+        st.write("#### Histogramas")
         # Configurar bins e limites globais
         global_min = df[cols].min().min()
         global_max = df[cols].max().max()
