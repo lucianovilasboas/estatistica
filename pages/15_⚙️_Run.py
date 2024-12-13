@@ -65,7 +65,7 @@ if uploaded_file:
     st.write("### Visualização Gráfica 📈")
 
     # Boxplot combinado
-    st.write("#### Comparação de Todas as Colunas em um Único Boxplot")
+    # st.write("#### Comparação de Todas as Colunas em um Único Boxplot")
     cols = df.select_dtypes(include=[np.number]).columns
     if len(cols) > 0:
         fig, ax = plt.subplots(figsize=(10, 6))
@@ -107,7 +107,7 @@ if uploaded_file:
 
     # Comparação do Volume Médio de Compras por Filial
     st.write("---")
-    st.write("#### Comparação do Volume Médio de Compras por Filial")
+    # st.write("#### Comparação do Volume Médio de Compras por Filial")
     if len(df.columns) > 1:
         media_por_filial = df.iloc[:,:].mean()
         fig, ax = plt.subplots(figsize=(10, 6))
@@ -131,7 +131,7 @@ if uploaded_file:
     # Análise de Sazonalidade
     if "Semana" in df.columns:
         st.write("---")
-        st.write("#### Análise de Sazonalidade")
+        # st.write("#### Análise de Sazonalidade")
         pivot_data = df.set_index("Semana").T
         fig, ax = plt.subplots(figsize=(12, 8))
         sns.heatmap(pivot_data, cmap='YlGnBu', cbar=True, annot=False, ax=ax)
@@ -142,7 +142,7 @@ if uploaded_file:
 
     # Ranking de Filiais por Total de Compras no Ano
     st.write("---")
-    st.write("#### Ranking de Filiais por Total de Compras no Ano")
+    # st.write("#### Ranking de Filiais por Total de Compras no Ano")
     if len(df.columns) > 1:
         total_por_filial = df.iloc[:,:].sum()
         fig, ax = plt.subplots(figsize=(10, 6))
