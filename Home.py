@@ -25,7 +25,7 @@ col1, col2 = st.columns([1, 5])
 
 with col1:
     # Adicionar uma imagem
-    st.image("https://media.licdn.com/dms/image/v2/D4D03AQEEN3I1PKUXxA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1721777516419?e=1736380800&v=beta&t=xmU2SBw4GCRvD-bv2TuJbbwWrcfHN2PzzEbto5KSPw0", caption="Foto do Professor Luciano", use_column_width=False)
+    st.image("https://media.licdn.com/dms/image/v2/D4D03AQEEN3I1PKUXxA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1721777516419?e=1736380800&v=beta&t=xmU2SBw4GCRvD-bv2TuJbbwWrcfHN2PzzEbto5KSPw0", caption="Foto do Professor Luciano", use_container_width =False)
 
 with col2:
     st.write("""
