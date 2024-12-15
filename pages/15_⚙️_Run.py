@@ -14,6 +14,19 @@ Faça upload de um arquivo (CSV, XLSX ou TSV) e explore as estatísticas descrit
 como média, desvio padrão, intervalos de confiança e gráficos interativos.
 """)
 
+# Função para carregar os dados (com cache)
+@st.cache_data
+def load_data(file):
+    # Detectar tipo de arquivo e carregar os dados
+    if uploaded_file.name.endswith(".csv"):
+        return  pd.read_csv(uploaded_file)
+    elif uploaded_file.name.endswith(".xlsx"):
+        return  pd.read_excel(uploaded_file)
+    elif uploaded_file.name.endswith(".tsv"):
+        return  pd.read_csv(uploaded_file, sep="\t")
+    return None
+
+
 # Função para calcular intervalo de confiança
 def calc_confidence_interval(data, confidence=0.95):
     mean = np.mean(data)
@@ -25,13 +38,8 @@ def calc_confidence_interval(data, confidence=0.95):
 uploaded_file = st.file_uploader("Faça upload do seu arquivo (CSV, XLSX ou TSV)", type=["csv", "xlsx", "tsv"])
 
 if uploaded_file:
-    # Detectar tipo de arquivo e carregar os dados
-    if uploaded_file.name.endswith(".csv"):
-        df = pd.read_csv(uploaded_file)
-    elif uploaded_file.name.endswith(".xlsx"):
-        df = pd.read_excel(uploaded_file)
-    elif uploaded_file.name.endswith(".tsv"):
-        df = pd.read_csv(uploaded_file, sep="\t")
+
+    df = load_data(uploaded_file)
 
     # Remover a coluna "Semana" se existir
     if "Semana" in df.columns:
