@@ -5,5 +5,5 @@ streamlit
 scipy
 seaborn
 openpyxl
-sklearn
+scikit-learn
 # simpleaudio
