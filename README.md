@@ -1,6 +1,25 @@
 # 📊 Estatistica - Aplicativos Interativos de Estatística e Probabilidade
 
+<div align="center">
+
+![Python](https://img.shields.io/badge/python-3.9-blue.svg)
+![Streamlit](https://img.shields.io/badge/streamlit-latest-red.svg)
+![Docker](https://img.shields.io/badge/docker-enabled-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
 Bem-vindo ao repositório de aplicativos interativos para apoio à disciplina de **Estatística e Probabilidade** do curso de Tecnologia em Processos Gerenciais do IFMG - Campus Ponte Nova.
+
+[Características](#características) •
+[Instalação](#instalação) •
+[Uso](#uso) •
+[Formato RTTTL](#formato-rtttl) •
+[Desenvolvimento](#desenvolvimento) •
+[Licença](#licença)
+
+</div>
+
+---
+
 
 ## 📖 Descrição do Projeto
 
@@ -297,3 +316,14 @@ O projeto aborda os seguintes tópicos de estatística:
 
 **Última atualização**: 16 de janeiro de 2026  
 **Versão**: 1.0
+
+
+---
+
+<div align="center">
+
+**Desenvolvido com ❤️ e 🎲 por [Luciano Vilas Boas Espiridião](https://github.com/seu-usuario)**
+
+Se este projeto foi útil, considere dar uma ⭐!
+
+</div>
